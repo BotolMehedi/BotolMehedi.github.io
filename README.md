@@ -4,6 +4,9 @@
 ##TOOLS PASS : https://BotolMehedi.github.io/tools.html
 #
 #
+##INJECTOR : https://botolmehedi.github.io/inj.html
+#
+#
 ##UDEMY ENROLL : https://BotolMehedi.github.io/udemy.html
 #
 #
