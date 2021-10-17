@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<style>     
+.social-icons {
+  height: 30px;
+  position: absolute;
+ top: 50px;
+  width: 82%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:#000022;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 35px 30px -30px #777;
+  border:2px solid;
+  border-radius:40px;
+  border-color:lime;
+}
+
+span {
+  margin: 0 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ff0;
+  line-height: 38px !important;
+  text-align: center;
+  color: snow;
+  font-size: 25px !important;
+  box-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+span:hover {
+  opacity: 1;
+}
+
+span:before {
+  position: relative;
+  z-index: 1;
+}
+
+#sp1 {
+  background: #EA4335;
+}
+
+#sp2 {
+  background: #191919;
+}
+
+#sp3 {
+  background: #4867AA;
+}
+
+#sp4 {
+  background: #800080;
+}
+
+span1:nth-of-type(5) {
+  background: #00ACED;
+}
+
+span2:nth-of-type(6) {
+  background: #EA4C89;
+}
+
+.after-span {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.75s ease-in;
+}
+
+span:hover .after-span.ripple {
+  transform: scale(1);
+  transition: transform 1s ease-out;
+}
+
+@media (max-width: 740px) {
+  span {
+    margin: 0 0px;
+  }
+}
+@media (max-width: 500px) {
+  .social-icons {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1px;
+  }
+
+span {
+    margin-top:3px;
+    margin-bottom:3px;
+    margin-right:10px;
+    margin-left:10px;
+    border: 1px solid lime;
+  }
+}
+           
+           
+           
+           
+           
+           
+           
+           
+           body{
+           margin-top:50px;
+           background:#000022;
+           padding:11px;
+           padding-top:0px;
+           }
+       
+
+
+  
+  .p {
+    border:solid 2px #00FF00;
+    color:#FFFFFF;
+    font-family:courier;
+    padding-left:20px;
+    padding-right:20px;
+    margin-bottom:3px;
+    padding-top:22px;
+    padding-bottom:10px;
+    font-size:13px;
+    border-radius:7px;
+    margin-top:3px;
+    height:100%;
+    
+      }
+      
+.p1 {
+  border:double 4px red;
+  color:#FFFFFF;
+  font-family:courier;
+  padding-left:20px;
+  padding-right:20px;
+  margin-bottom:3px;
+  padding-top:10px;
+  padding-bottom:10px;
+  font-size:13px;
+  border-radius:7px;
+  margin-top:3px;
+  height:100%;
+  
+    }
+    
+    
+   		.p2 {
+   		border:double 4px purple;
+   		color:#FFFFFF;
+   		font-family:courier;
+   		padding-left:2px;
+   		padding-right:2px;
+   		margin-bottom:3px;
+   		padding-top:1px;
+   		padding-bottom:1px;
+   		font-size:;
+   		border-radius:7px;
+   		margin-top:20px;
+   		height:100%;
+   		
+   		}
+   
+ .p3 {
+   border:double 4px #00FF00;
+  
+   font-family:courier;
+  padding-top:10px;
+  padding-bottom:10px;
+   border-radius:7px;
+   margin-top:10px;
+   height:100%;
+   margin-bottom:10px;
+     }
+ 
+ .nt {
+  	color:yellow;
+  	font-size:15px;
+  	text-align:center;
+  	padding-top:10px;
+  	}
+  
+.txt {
+ 	text-align:center;
+ 	color:lawngreen;
+ 	font-size:70px;
+ 	font-family: 'VT323', monospace;  
+ 	margin-bottom:10px;
+ 	padding-bottom:10px;
+ 	margin-top:0;
+ 	padding-top:0px;
+ 	border-bottom:1px solid;
+ 	}
+ 	
+ 	
+
+.ixt {
+ 	text-align:center;
+ 	color:red ;
+ 	font-size:27px;
+ 	font-family: 'VT323', monospace;  
+ 	margin-bottom:10px;
+ 	padding-bottom:10px;
+ 	margin-top:0;
+ 	padding-top:0px;
+ 	
+ 	border-bottom:1px solid ;
+ 	}
+
+
+ 	
+.btn{
+  color: #23FF13 ;
+  border: 1px dotted lawngreen;
+  margin: 15px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+ border-radius:30px;
+  letter-spacing: 1px;
+  cursor: pointer; 
+  transition: 0.5s;
+  transition-property: box-shadow;
+  margin-bottom:14px;
+}
+
+.btn-primary{
+  background:#000022;
+  box-shadow: 0 0 10px #23FF13;
+}
+
+.btn-primary:hover{
+  box-shadow: 0 0 5px #23FF13 ,
+              0 0 25px #23FF13,
+              0 0 50px #23FF13,
+              0 0 100px #23FF13;
+}
+ 
+ 	
+ 	
+ 	
+ 	
+ 	.vpass {
+ 			border-bottom:0px solid lawngreen;
+ 			text-align:center;
+ 			margin-top:0px;
+ 			border:;
+ 			border-right:0px;
+ 			border-left:0px;
+ 			padding-bottom:0px;
+ 			}
+ 	
+ sub {
+
+ 		margin:0;
+ 		padding:0;
+ 		}
+ 		
+
+ 		
+.aln	{
+		text-align:center;
+		}
+ 	
+ 			
+.Dn 	{ 
+		color:white;
+		font-size:14px;
+		background:gray;
+		border-radius:20px;
+		padding-top:6px;
+		padding-bottom:6px;
+		padding-right:10%;
+		padding-left:10%;
+		border-color:;
+		border: dashed white   ;
+		margin:3px;
+		
+		}
+		
+		
+.b1,.b2 {
+		color:yellow;
+		background:blue;
+		border:2px dashed yellow;
+		width:46%;
+		border-radius:25px;
+		
+		}	
+		
+.tab {
+			text-align:center;
+			border:2px dotted orange;
+			margin-top:10px;
+			padding-top:10px;
+			padding-bottom:10px;
+			padding-right:3px;
+			padding-left:3px;
+			border-top-right-radius:25px;
+			border-bottom-left-radius:25px;
+			border-left-color:;
+			border-right-color:;
+			
+			}
+			
+.yt { background:;
+	 color:; 
+	margin-left:0px;
+	margin-right:0px;
+	width:80%px;
+	padding-top:4px;
+	border-radius:20px;
+	border:red 1px solid;
+	
+	}
+		
+</style>
+<title></title>
+</head>
+<body>
+
+
+
+
+
+<div class="p" >
+
+<div class="social-icons">
+<a href="https://youtube.com/BotolBaba" >
+<span class="fa fa-youtube" id="sp1" >
+<a class="after-span ripple"  ></a>
+</span></a>
+<a href="https://instagram.com/mehtanofficial" >
+<span class="fa fa-instagram" id="sp2">
+<a class="after-span ripple"></a>
+</span></a>
+<a href="https://www.facebook.com/MehediHasanAriyan2" >
+<span class="fa fa-facebook" id="sp3" >
+<a class="after-span ripple"></a>
+</span></a>
+<a href="https://github.com/BotolMehedi" >
+<span class="fa fa-github" id="sp4">
+<a class="after-span ripple"></a>
+</span>
+
+
+</div>
+
+<div class="p3" >
+	 <div class="vpass" > <p> FREE FIRE INJECTOR ZONE </p>
+	 </div>
+</div>		
+
+
+
+
+		<div class="p1"  > <div class=" ixt" > <img src="https://i.ibb.co/34mXvvQ/20211017-085029.png" height="98px" width="98px"   > <br> BotolBaba INJV2 </div>
+		<sub>Features:</sub>
+		<p class="nt" >AIM BOT </p><p class="nt" >AIM BOT PRO </p><p class="nt" >AIM LOCK </p><p class="nt" >ESP BLUE LINE </p><p class="nt" >MP40 LOCATION</p><p class="nt" >SHOTGUN LOCATION</p><p class="nt" >FF COIN LOCATION</p><p class="nt" >MADIKET LOCATION</p><p class="nt" >GLOWALL LOCATION</p><p class="nt" >RUN IN WATER</p><p class="nt" >ANTIBAN</p>
+		<div class=" ixt" > </div>
+		<sub>USER & PASS:</sub><p class="nt" >botolbaba</p><br><center>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<div class="yt" >
+		 <a href="https://apkadmin.com/73divdff15jh/BotolBaba_INJV2.apk.html">	
+	 <button class="btn btn-primary">Download</button> </a> 	
+		</div>
+		</center>
+		</div>
+	
+	
+	
+	<div class="tab" >
+<p> BOTOL BABA | Mehedi Hasan Ariyan </p>
+</center>
+
+<script src="https://apis.google.com/js/platform.js"></script>
+  <script src='https://use.fontawesome.com/b01e280e04.js'></script>
+
+</body>
+
+</html>
