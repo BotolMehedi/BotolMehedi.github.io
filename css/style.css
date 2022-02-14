@@ -10,11 +10,11 @@ body {
 }
 
 .bg-blue {
-  background: #0099ff!important;
+  background: #3AFFB0!important;
 }
 
 #home {
-  background: #0099ff!important;
+  background: #3AFFB0!important;
   height: 43vh;
 }
 
@@ -103,7 +103,7 @@ path {
   border-radius: 5%;
   right: 30px;
   border: none;
-  background: #0099ff!important;
+  background: #3AFFB0!important;
   color: #fff;
   position: fixed;
   text-align: center;
@@ -135,7 +135,7 @@ footer {
   width: 100%;
   bottom: 0;
   padding: 20px;
-  background: #0099ff!important;
+  background: #3AFFB0!important;
   font-family: Monospace;
   font-weight: bold;
 }
