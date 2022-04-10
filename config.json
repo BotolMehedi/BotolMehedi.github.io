@@ -1,0 +1,171 @@
+{
+	"blog": {
+		"blogger_id": "8833070762040454279",
+		"api_key": "AIzaSyDVqYcgeNbYGNv1XKP2hm5AP1Ycy_ZBsZE"
+	},
+	"app": {
+		"status": "1",
+		"more_apps_url": "https://play.google.com/store/apps/developer?id=BabasLab",
+		"redirect_url": "",
+		"privacy_policy_url": "https://BotolMehedi.github.io/srkarchive_privacypolicy.html",
+		"display_wallpaper_name": "true",
+		"center_crop_wallpaper": "true",
+		"custom_label_list": "false"
+	},
+	"notification": {
+		"fcm_notification_topic": "blogger_wallpaper_app_topic",
+		"onesignal_app_id": "1b9533f0-d861-42ed-91ac-e7a1cddb89e7"
+	},
+	"ads": {
+		"ad_status": "1",
+		"ad_type": "admob",
+		"backup_ads": "none",
+		"admob_publisher_id": "pub-7569767403105312",
+		"admob_app_id": "ca-app-pub-7569767403105312~8931233530",
+		"admob_banner_unit_id": "ca-app-pub-7569767403105312/6668032277",
+		"admob_interstitial_unit_id": "ca-app-pub-7569767403105312/5730355120",
+		"admob_native_unit_id": "ca-app-pub-7569767403105312/4059601689",
+		"admob_app_open_ad_unit_id": "ca-app-pub-7569767403105312/5347211745",
+		"startapp_app_id": "203146081",
+		"unity_game_id": "4698821",
+		"unity_banner_placement_id": "Banner_Android",
+		"unity_interstitial_placement_id": "Interstitial_Android",
+		"applovin_banner_ad_unit_id": "0",
+		"applovin_interstitial_ad_unit_id": "0",
+		"mopub_banner_ad_unit_id": "b195fd4a",
+		"mopub_interstitial_ad_unit_id": "24534117e",
+		"interstitial_ad_interval": 3,
+		"native_ad_interval": 10,
+		"native_ad_index": 5
+	},
+	"labels": [
+	    {
+			"term": "SRK LATEST",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbN3i3R6uVGMC09eM1e9IeQBjJxh8yV88Cpg&usqp=CAU"
+		},
+		{
+			"term": "SRK 1992",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyrJVEkvyUQT4aykuSJBuRoLrBo46kLQy5og&usqp=CAU"
+		},
+		{
+			"term": "SRK 1993",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA2AvkpKm6vhopYSJlidvVAZ2Gcmq3fyrmCg&usqp=CAU"
+		},
+		{
+			"term": "SRK 1994",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZGngak9i_OEnP8L30ieShWjyE0hG9la_odw&usqp=CAU"
+		},
+		{
+			"term": "SRK 1995",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmak04Xq4hc91Q90N3NqzS5nTwRMRV_mVJw&usqp=CAU"
+		},
+		{
+			"term": "SRK 1996",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk4tef2gg-cD9nKvmXZGMlnROhSkXK8owbXQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 1997",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0FBKKAgq86_9OL_LJjgt3xjB5ie3Yo9ShpQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 1998",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRumEpBhTP0A01Yl7GJIWcigNIZKQbyge6SJw&usqp=CAU"
+		},
+		{
+			"term": "SRK 1999",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMPkyI1S6opJq3Y9dKhE5nzCnIZaTjlijdzQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 2000",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPgNK-InWW_aq8gxHW3iokTyGyPwTc5UR_pw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2001",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQP0lh7vLee0ZOSlSLpNCpw1E5O98o5ACvnA&usqp=CAU"
+		},
+		{
+			"term": "SRK 2002",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRad_p8KK1noAUatjyFsGlRS_eveG5ikmZjbQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 2003",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVp5iKcT08y_1kgHATecUgbS9Q-y65tLbuJQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 2004",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoKiYIGUGOabge8PqWHs_8ildISRFu8jRcw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2005",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-qNBbwTd1nWkh5hAbNYJ1P-YpWvmoiPbAHA&usqp=CAU"
+		},
+		{
+			"term": "SRK 2006",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdlXVbHhzKa-Dprv5WXBQItCHCJgN-LeEYSg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2007",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPhU89OAg5JYRuhir8sMh5KXAHpT9WA7U9eg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2008",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwyHXONatD5cN7OocwQWM1n6k08K4AXbqTuw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2009",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLg4WASqV7ykDKKg_COGIZaZjn97oDkRmzLQ&usqp=CAU"
+		},
+		{
+			"term": "SRK 2010",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVAJ7_t4twLbex7kU4g385K63nUi48IS1d6Q&usqp=CAU"
+		},
+		{
+			"term": "SRK 2011",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-nXIASdvwsYbqooro-RA40N3XzJWpldiGA&usqp=CAU"
+		},
+		{
+			"term": "SRK 2012",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRih_VW-AagOC_3kk891gX2xXMNQXlFb_cbqg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2013",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT4CIPtGqa3TmpDF95Kb-maGaIQRE00ZylzA&usqp=CAU"
+		},
+		{
+			"term": "SRK 2014",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ68uCCscl8Y7wDLVgfhtwlzxVP7YwoBrIxw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2015",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsX-Kuc3izR0gv2vgyTuoT3GA0P-ZfeDG_gg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2016",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8nVuYp3AeXfjEj_zwohwIrXcmH4MyG-JgJw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2017",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT85vhUMNAfz3xWydIyiOlKW3vYDs3LR2ZRmg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2018",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh3XCbljVtbEx1419AeEVYvrOrpwwu6LAsdA&usqp=CAU"
+		},
+		{
+			"term": "SRK 2019",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA2AvkpKm6vhopYSJlidvVAZ2Gcmq3fyrmCg&usqp=CAU"
+		},
+		{
+			"term": "SRK 2020",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXEdAxzBmB333elXxdOm57ArlXOpyha_GUng&usqp=CAU"
+		},
+		{
+			"term": "SRK 2021",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL1RtiIglEDtnM_oOSt0JCYWVqXJYhNo7lAw&usqp=CAU"
+		},
+		{
+			"term": "SRK 2022",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0wlX79UgE6Tlz_S3jDfBauKlms2zvT6X_ww&usqp=CAU"
+		}
+	]
+}
