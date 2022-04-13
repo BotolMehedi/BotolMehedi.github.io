@@ -10,7 +10,7 @@
 		"privacy_policy_url": "https://BotolMehedi.github.io/srkarchive_privacypolicy.html",
 		"display_wallpaper_name": "false",
 		"center_crop_wallpaper": "false",
-		"custom_label_list": "true"
+		"custom_label_list": "false"
 	},
 	"notification": {
 		"fcm_notification_topic": "blogger_wallpaper_app_topic",
