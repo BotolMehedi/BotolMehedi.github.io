@@ -10,7 +10,7 @@
 		"privacy_policy_url": "https://BotolMehedi.github.io/srkarchive_privacypolicy.html",
 		"display_wallpaper_name": "false",
 		"center_crop_wallpaper": "false",
-		"custom_label_list": "false"
+		"custom_label_list": "true"
 	},
 	"notification": {
 		"fcm_notification_topic": "blogger_wallpaper_app_topic",
@@ -34,9 +34,7 @@
 		"applovin_interstitial_ad_unit_id": "0",
 		"mopub_banner_ad_unit_id": "b195fd4a",
 		"mopub_interstitial_ad_unit_id": "24534117e",
-		"interstitial_ad_interval": 3,
-		"native_ad_interval": 10,
-		"native_ad_index": 5
+		"interstitial_ad_interval": 3
 	},
 	"labels": [
 	    {
