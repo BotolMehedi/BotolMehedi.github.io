@@ -18,7 +18,7 @@
 	},
 	"ads": {
 		"ad_status": "1",
-		"ad_type": "admob",
+		"ad_type": "startapp",
 		"backup_ads": "none",
 		"admob_publisher_id": "pub-7569767403105312",
 		"admob_app_id": "ca-app-pub-7569767403105312~8931233530",
