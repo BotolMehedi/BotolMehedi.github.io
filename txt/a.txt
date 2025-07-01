@@ -51,7 +51,16 @@ export function PositionManager({ user }: PositionManagerProps) {
     };
 
     ws.onerror = (err) => console.error('WebSocket error:', err);
-    ws.onclose = () => setTimeout(() => window.location.reload(), 2000); // reconnect
+
+    ws.onclose = () => {
+      console.warn('WebSocket closed. Reconnecting...');
+      setTimeout(() => {
+        if (positions.length > 0) {
+          const newStreams = positions.map(pos => `${pos.symbol.toLowerCase()}@ticker`).join('/');
+          new WebSocket(`wss://stream.binance.com:9443/stream?streams=${newStreams}`);
+        }
+      }, 3000);
+    };
 
     return () => ws.close();
   }, [positions]);
@@ -67,8 +76,10 @@ export function PositionManager({ user }: PositionManagerProps) {
             pnl = (pos.price - price) * pos.quantity * pos.leverage;
           }
 
-          // Update in DB
-          supabase.from('trades').update({ pnl }).eq('id', pos.id);
+          supabase
+            .from('trades')
+            .update({ pnl })
+            .eq('id', pos.id);
 
           return { ...pos, pnl };
         }
@@ -111,7 +122,7 @@ export function PositionManager({ user }: PositionManagerProps) {
         await supabase.from('trades').update({ pnl }).eq('id', pos.id);
         updatedPositions.push({ ...pos, pnl });
       } catch (e) {
-        console.error(`Price fetch error for ${pos.symbol}`);
+        console.error(`Error fetching price for ${pos.symbol}`);
       }
     }
 
