@@ -1,0 +1,277 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { X, TrendingUp, TrendingDown, RefreshCw } from 'lucide-react';
+import { toast } from 'sonner';
+
+interface Position {
+  id: string;
+  symbol: string;
+  side: 'buy' | 'sell';
+  quantity: number;
+  price: number;
+  leverage: number;
+  pnl: number;
+  created_at: string;
+}
+
+interface PositionManagerProps {
+  user: any;
+}
+
+export function PositionManager({ user }: PositionManagerProps) {
+  const [positions, setPositions] = useState<Position[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [currentPrices, setCurrentPrices] = useState<{ [key: string]: number }>({});
+
+  useEffect(() => {
+    fetchPositions();
+  }, [user.id]);
+
+  useEffect(() => {
+    if (positions.length === 0) return;
+
+    const streams = positions.map(pos => `${pos.symbol.toLowerCase()}@ticker`).join('/');
+    const ws = new WebSocket(`wss://stream.binance.com:9443/stream?streams=${streams}`);
+
+    ws.onmessage = (event) => {
+      const res = JSON.parse(event.data);
+      const data = res?.data;
+      if (!data?.s || !data?.c) return;
+      const symbol = data.s.toUpperCase();
+      const price = parseFloat(data.c);
+
+      setCurrentPrices(prev => ({ ...prev, [symbol]: price }));
+      updatePnLForSymbol(symbol, price);
+    };
+
+    ws.onerror = (err) => console.error('WebSocket error:', err);
+    ws.onclose = () => setTimeout(() => window.location.reload(), 2000); // reconnect
+
+    return () => ws.close();
+  }, [positions]);
+
+  const updatePnLForSymbol = (symbol: string, price: number) => {
+    setPositions(prev =>
+      prev.map(pos => {
+        if (pos.symbol === symbol) {
+          let pnl = 0;
+          if (pos.side === 'buy') {
+            pnl = (price - pos.price) * pos.quantity * pos.leverage;
+          } else {
+            pnl = (pos.price - price) * pos.quantity * pos.leverage;
+          }
+
+          // Update in DB
+          supabase.from('trades').update({ pnl }).eq('id', pos.id);
+
+          return { ...pos, pnl };
+        }
+        return pos;
+      })
+    );
+  };
+
+  const fetchPositions = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('trades')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('status', 'open')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      toast.error('Failed to fetch trades');
+      return;
+    }
+
+    const prices: { [key: string]: number } = {};
+    const updatedPositions: Position[] = [];
+
+    for (const pos of data || []) {
+      try {
+        const res = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${pos.symbol}`);
+        const json = await res.json();
+        const currentPrice = parseFloat(json.price);
+        prices[pos.symbol] = currentPrice;
+
+        let pnl = 0;
+        if (pos.side === 'buy') {
+          pnl = (currentPrice - pos.price) * pos.quantity * pos.leverage;
+        } else {
+          pnl = (pos.price - currentPrice) * pos.quantity * pos.leverage;
+        }
+
+        await supabase.from('trades').update({ pnl }).eq('id', pos.id);
+        updatedPositions.push({ ...pos, pnl });
+      } catch (e) {
+        console.error(`Price fetch error for ${pos.symbol}`);
+      }
+    }
+
+    setCurrentPrices(prices);
+    setPositions(updatedPositions);
+    setLoading(false);
+  };
+
+  const updatePositionPnL = async () => {
+    setRefreshing(true);
+    await fetchPositions();
+    setRefreshing(false);
+  };
+
+  const closePosition = async (positionId: string) => {
+    const pos = positions.find(p => p.id === positionId);
+    if (!pos) return;
+
+    const currentPrice = currentPrices[pos.symbol];
+    if (!currentPrice) {
+      toast.error('Current price not found');
+      return;
+    }
+
+    let finalPnL = 0;
+    if (pos.side === 'buy') {
+      finalPnL = (currentPrice - pos.price) * pos.quantity * pos.leverage;
+    } else {
+      finalPnL = (pos.price - currentPrice) * pos.quantity * pos.leverage;
+    }
+
+    const { error } = await supabase
+      .from('trades')
+      .update({
+        status: 'closed',
+        pnl: finalPnL,
+        close_price: currentPrice,
+        closed_at: new Date().toISOString(),
+      })
+      .eq('id', positionId);
+
+    if (error) {
+      toast.error('Failed to close position');
+      return;
+    }
+
+    await supabase.rpc('log_user_activity', {
+      p_user_id: user.id,
+      p_activity_type: 'trade_closed',
+      p_description: `Closed ${pos.side} ${pos.symbol} PnL: ${finalPnL.toFixed(2)}`,
+      p_metadata: {
+        trade_id: pos.id,
+        ...pos,
+        exit_price: currentPrice,
+        pnl: finalPnL,
+      },
+    });
+
+    toast.success('Position closed');
+    fetchPositions();
+  };
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 6,
+    }).format(amount);
+  };
+
+  const getPnLColor = (pnl: number) => {
+    if (pnl > 0) return 'text-green-500';
+    if (pnl < 0) return 'text-red-500';
+    return 'text-muted-foreground';
+  };
+
+  if (loading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Positions</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center justify-center h-32">Loading...</div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0">
+        <CardTitle>Open Positions ({positions.length})</CardTitle>
+        <Button variant="outline" size="sm" onClick={updatePositionPnL} disabled={refreshing}>
+          <RefreshCw className={`w-4 h-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
+          Refresh
+        </Button>
+      </CardHeader>
+      <CardContent>
+        {positions.length === 0 ? (
+          <div className="flex items-center justify-center h-32 text-muted-foreground">
+            No open positions. Start trading to see your positions here.
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {positions.map((position) => (
+              <div
+                key={position.id}
+                className="p-4 rounded-lg border hover:bg-muted/50 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-3">
+                    <Badge variant="outline" className="font-mono">{position.symbol}</Badge>
+                    <div className="flex items-center space-x-1">
+                      {position.side === 'buy' ? (
+                        <TrendingUp className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <TrendingDown className="w-4 h-4 text-red-500" />
+                      )}
+                      <span className={`text-sm font-medium ${
+                        position.side === 'buy' ? 'text-green-500' : 'text-red-500'
+                      }`}>
+                        {position.side.toUpperCase()}
+                      </span>
+                    </div>
+                    <Badge variant="secondary" className="text-xs">{position.leverage}x</Badge>
+                  </div>
+                  <Button variant="destructive" size="sm" onClick={() => closePosition(position.id)}>
+                    <X className="w-4 h-4 mr-1" />
+                    Close
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div>
+                    <span className="text-muted-foreground">Size:</span>
+                    <div className="font-mono">{position.quantity}</div>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Entry Price:</span>
+                    <div className="font-mono">{formatCurrency(position.price)}</div>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Current Price:</span>
+                    <div className="font-mono">{formatCurrency(currentPrices[position.symbol] || 0)}</div>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">P&L:</span>
+                    <div className={`font-mono ${getPnLColor(position.pnl)}`}>
+                      {position.pnl >= 0 ? '+' : ''}
+                      {formatCurrency(position.pnl)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
